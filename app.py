@@ -13,10 +13,13 @@ confidence_threshold = st.sidebar.slider("Confidence threshold", 0.0, 1.0, 0.5, 
 # Get the necessary files
 @st.cache(show_spinner=False)
 def get_files(urls):
-    for fn, url in urls.items():
-        r = requests.get(url)
-        open(fn, 'wb').write(r.content)
-
+    try:
+        for fn, url in urls.items():
+            r = requests.get(url)
+            open(fn, 'wb').write(r.content)
+    except Exception as e:
+        st.write(e)
+        
 # a function to download the image from the selected file
 @st.cache(show_spinner=False)
 def read_img(img):
