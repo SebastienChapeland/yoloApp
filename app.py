@@ -6,8 +6,8 @@ import numpy as np
 from PIL import Image
 
 # Get the necessary files
-wget.download("https://pjreddie.com/media/files/yolov3.weights", out='.')
-wget.download("https://raw.githubusercontent.com/pjreddie/darknet/master/cfg/yolov3.cfg", out='.')
+wget.download("https://onedrive.live.com/download?cid=2FC9D36DB856FA39&resid=2FC9D36DB856FA39%2134980&authkey=ADwI9Y5h5HCc5kU", out='.')
+wget.download("https://onedrive.live.com/download?cid=2FC9D36DB856FA39&resid=2FC9D36DB856FA39%2134979&authkey=AGCGt7UDRRx4_L8", out='.')
 
 # Add a title and sidebar
 st.title("Object Detection")
