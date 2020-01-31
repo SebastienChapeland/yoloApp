@@ -1,13 +1,15 @@
-import wget
 import streamlit as st
 import cv2
 import pandas as pd
 import numpy as np
+import requests
 from PIL import Image
 
 # Get the necessary files
-wget.download("https://onedrive.live.com/download?cid=2FC9D36DB856FA39&resid=2FC9D36DB856FA39%2134980&authkey=ADwI9Y5h5HCc5kU", out='.')
-wget.download("https://onedrive.live.com/download?cid=2FC9D36DB856FA39&resid=2FC9D36DB856FA39%2134979&authkey=AGCGt7UDRRx4_L8", out='.')
+r = requests.get("https://onedrive.live.com/download?cid=2FC9D36DB856FA39&resid=2FC9D36DB856FA39%2134980&authkey=ADwI9Y5h5HCc5kU")
+open('yolov3.weights', 'wb').write(r.content)
+r = requests.get("https://onedrive.live.com/download?cid=2FC9D36DB856FA39&resid=2FC9D36DB856FA39%2134979&authkey=AGCGt7UDRRx4_L8")
+open('yolov3.cfg', 'wb').write(r.content)
 
 # Add a title and sidebar
 st.title("Object Detection")

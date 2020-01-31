@@ -4,5 +4,5 @@ streamlit==0.54.0
 opencv_python==4.1.2.30
 wget==3.2
 Pillow==7.0.0
-https://onedrive.live.com/download?cid=2FC9D36DB856FA39&resid=2FC9D36DB856FA39%2134980&authkey=ADwI9Y5h5HCc5kU
-https://onedrive.live.com/download?cid=2FC9D36DB856FA39&resid=2FC9D36DB856FA39%2134979&authkey=AGCGt7UDRRx4_L8
+# https://onedrive.live.com/download?cid=2FC9D36DB856FA39&resid=2FC9D36DB856FA39%2134980&authkey=ADwI9Y5h5HCc5kU
+# https://onedrive.live.com/download?cid=2FC9D36DB856FA39&resid=2FC9D36DB856FA39%2134979&authkey=AGCGt7UDRRx4_L8
