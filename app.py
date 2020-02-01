@@ -111,7 +111,7 @@ uploaded_file = st.file_uploader("Choose an image", type="jpg")
 if uploaded_file is not None:
     with Image.open(uploaded_file) as img:
         image = np.array(img)
+        yolo_v3(image, confidence_threshold)
 #         st.image(img, use_column_width=True, caption='Your picture')
     
 # Get the boxes for the objects detected by YOLO by running the YOLO model.
-yolo_v3(image, confidence_threshold)
