@@ -23,7 +23,6 @@ def get_files(urls):
         st.write(e)
         
 # Yolo function
-@st.cache(show_spinner=False)
 def yolo_v3(image, confidence_threshold=0.5, overlap_threshold=0.3):
 	# Load model architecture
     net = cv2.dnn.readNetFromDarknet("yolov3.cfg", "yolov3.weights")
