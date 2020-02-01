@@ -111,6 +111,8 @@ image = read_img(image_url)
 # if uploaded_file is not None:
 #     with Image.open(uploaded_file) as img:
 #         image = np.array(img)
-#         yolo_v3(image, confidence_threshold)
+        # yolo_v3(image, confidence_threshold)
     
 # Get the boxes for the objects detected by YOLO by running the YOLO model.
+yolo_v3(image, confidence_threshold)
+    
