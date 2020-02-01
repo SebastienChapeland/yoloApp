@@ -11,14 +11,14 @@ st.sidebar.markdown("# Model")
 confidence_threshold = st.sidebar.slider("Confidence threshold", 0.0, 1.0, 0.5, 0.01)
 
 # Get the necessary files
-@st.cache(show_spinner=False)
-def get_files(urls):
-    try:
-        for fn, url in urls.items():
-            r = requests.get(url)
-            open(fn, 'wb').write(r.content)
-    except Exception as e:
-        st.write(e)
+# @st.cache(show_spinner=False)
+# def get_files(urls):
+#     try:
+#         for fn, url in urls.items():
+#             r = requests.get(url)
+#             open(fn, 'wb').write(r.content)
+#     except Exception as e:
+#         st.write(e)
         
 # a function to download the image from the selected file
 @st.cache(show_spinner=False)
@@ -89,29 +89,28 @@ def yolo_v3(image, confidence_threshold=0.5, overlap_threshold=0.3):
     # Display the final image
     st.image(image_with_boxes.astype(np.uint8), use_column_width=True)
 
-# img_type = st.sidebar.selectbox("Select image type?", ['Cars', 'People', 'Animals', "Meeting"])
+img_type = st.sidebar.selectbox("Select image type?", ['Cars', 'People', 'Animals', "Meeting"])
 
-# if img_type == 'People':
-#     image_url = "images/people.jpg"
-# elif img_type == 'Cars':
-#     image_url = "images/cars.jpg"
-# elif img_type == 'Animals':
-#     image_url = "images/animal.jpg"
-# elif img_type == 'Meeting':
-#     image_url = "images/meeting.jpg"
+if img_type == 'People':
+    image_url = "images/people.jpg"
+elif img_type == 'Cars':
+    image_url = "images/cars.jpg"
+elif img_type == 'Animals':
+    image_url = "images/animal.jpg"
+elif img_type == 'Meeting':
+    image_url = "images/meeting.jpg"
 
-# image = read_img(image_url)
+image = read_img(image_url)
 
-urls = {'yolov3.weights':"https://onedrive.live.com/download?cid=2FC9D36DB856FA39&resid=2FC9D36DB856FA39%2134980&authkey=ADwI9Y5h5HCc5kU",
-        'yolov3.cfg':"https://onedrive.live.com/download?cid=2FC9D36DB856FA39&resid=2FC9D36DB856FA39%2134979&authkey=AGCGt7UDRRx4_L8"}
+# urls = {'yolov3.weights':"https://onedrive.live.com/download?cid=2FC9D36DB856FA39&resid=2FC9D36DB856FA39%2134980&authkey=ADwI9Y5h5HCc5kU",
+#         'yolov3.cfg':"https://onedrive.live.com/download?cid=2FC9D36DB856FA39&resid=2FC9D36DB856FA39%2134979&authkey=AGCGt7UDRRx4_L8"}
 
-get_files(urls)
+# get_files(urls)
 
-uploaded_file = st.file_uploader("Choose an image", type="jpg")
-if uploaded_file is not None:
-    with Image.open(uploaded_file) as img:
-        image = np.array(img)
-        yolo_v3(image, confidence_threshold)
-#         st.image(img, use_column_width=True, caption='Your picture')
+# uploaded_file = st.file_uploader("Choose an image", type="jpg")
+# if uploaded_file is not None:
+#     with Image.open(uploaded_file) as img:
+#         image = np.array(img)
+#         yolo_v3(image, confidence_threshold)
     
 # Get the boxes for the objects detected by YOLO by running the YOLO model.
