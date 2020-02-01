@@ -89,16 +89,11 @@ def yolo_v3(image, confidence_threshold=0.5, overlap_threshold=0.3):
     # Display the final image
     st.image(image_with_boxes.astype(np.uint8), use_column_width=True)
 
-img_type = st.sidebar.selectbox("Select image type?", ['Cars', 'People', 'Animals', "Meeting"])
+img_type = st.sidebar.selectbox("Select image type?", ['Surf'])
 
-if img_type == 'People':
-    image_url = "images/people.jpg"
-elif img_type == 'Cars':
-    image_url = "images/cars.jpg"
-elif img_type == 'Animals':
-    image_url = "images/animal.jpg"
-elif img_type == 'Meeting':
-    image_url = "images/meeting.jpg"
+if img_type == 'Surf':
+    image_url = "images/surf.jpg"
+
 
 image = read_img(image_url)
 
