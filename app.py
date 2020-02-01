@@ -22,16 +22,9 @@ def get_files(urls):
     except Exception as e:
         st.write(e)
         
-# a function to download the image from the selected file
-@st.cache(show_spinner=False)
-def read_img(img):
-    image = cv2.imread(im, cv2.IMREAD_COLORg)
-    image = image[:, :, [2, 1, 0]] # BGR -> RGB
-    return image
-
 # Yolo function
+@st.cache(show_spinner=False)
 def yolo_v3(image, confidence_threshold=0.5, overlap_threshold=0.3):
-
 	# Load model architecture
     net = cv2.dnn.readNetFromDarknet("yolov3.cfg", "yolov3.weights")
     output_layer_names = net.getLayerNames()
@@ -95,13 +88,9 @@ urls = {'yolov3.weights':"https://onedrive.live.com/download?cid=2FC9D36DB856FA3
         'yolov3.cfg':"https://onedrive.live.com/download?cid=2FC9D36DB856FA39&resid=2FC9D36DB856FA39%2134979&authkey=AGCGt7UDRRx4_L8"}
 get_files(urls)
 
-
 uploaded_file = st.file_uploader("Choose an image", type="jpg")
 if uploaded_file is not None:
     with Image.open(uploaded_file) as img:
         image = np.array(img)
-        yolo_v3(image, confidence_threshold)
-    
-# Get the boxes for the objects detected by YOLO by running the YOLO model.
-# yolo_v3(image, confidence_threshold)
-    
+        # Get the boxes for the objects detected by YOLO by running the YOLO model.
+        yolo_v3(image, confidence_threshold)    
