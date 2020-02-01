@@ -3,6 +3,7 @@ import cv2
 import pandas as pd
 import numpy as np
 import requests
+import os
 from PIL import Image
 
 # Add a title and sidebar
@@ -15,8 +16,9 @@ confidence_threshold = st.sidebar.slider("Confidence threshold", 0.0, 1.0, 0.5, 
 def get_files(urls):
     try:
         for fn, url in urls.items():
-            r = requests.get(url)
-            open(fn, 'wb').write(r.content)
+            if not os.path.exists(fn):
+                r = requests.get(url)
+                open(fn, 'wb').write(r.content)
     except Exception as e:
         st.write(e)
         
@@ -89,18 +91,10 @@ def yolo_v3(image, confidence_threshold=0.5, overlap_threshold=0.3):
     # Display the final image
     st.image(image_with_boxes.astype(np.uint8), use_column_width=True)
 
-# img_type = st.sidebar.selectbox("Select image type?", ['Surf'])
-
-# if img_type == 'Surf':
-#     image_url = "images/surf.jpg"
-
-
-# image = read_img(image_url)
-
 urls = {'yolov3.weights':"https://onedrive.live.com/download?cid=2FC9D36DB856FA39&resid=2FC9D36DB856FA39%2134980&authkey=ADwI9Y5h5HCc5kU",
         'yolov3.cfg':"https://onedrive.live.com/download?cid=2FC9D36DB856FA39&resid=2FC9D36DB856FA39%2134979&authkey=AGCGt7UDRRx4_L8"}
-
 get_files(urls)
+
 
 uploaded_file = st.file_uploader("Choose an image", type="jpg")
 if uploaded_file is not None:
