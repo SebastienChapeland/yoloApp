@@ -2,8 +2,8 @@ import streamlit as st
 import cv2
 import pandas as pd
 import numpy as np
-import requests
-from PIL import Image
+# import requests
+# from PIL import Image
 
 # Add a title and sidebar
 st.title("Object Detection")
